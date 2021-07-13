@@ -11,7 +11,8 @@ namespace _5_print_comb
             {
                 if (i > 0)
                     Console.Write(", ");
-                Console.Write(i);
+                // write the integer with preceding zeros
+                Console.Write("{0:D2}", i);
             }
         }
     }
