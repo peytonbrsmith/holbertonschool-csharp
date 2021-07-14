@@ -8,8 +8,11 @@ class Array{
             // Print the array in reverse order
             for (int i = array.Length - 1; i >= 0; i--)
             {
-                Console.Write(array[i] + " ");
-                
+                Console.Write(array[i]);
+                if (i != array.Length - 1)
+                {
+                    Console.Write(" ");
+                }
             }
         }
         Console.WriteLine();
