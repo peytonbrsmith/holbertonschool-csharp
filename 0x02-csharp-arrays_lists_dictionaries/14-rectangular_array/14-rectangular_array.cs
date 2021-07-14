@@ -26,7 +26,11 @@ namespace _14_rectangular_array
             {
                 for (int col = 0; col < array.GetLength(1); col++)
                 {
-                    Console.Write(array[row, col] + " ");
+                    Console.Write(array[row, col]);
+                    if (col < array.GetLength(1) - 1)
+                    {
+                        Console.Write(" ");
+                    }
                 }
             Console.WriteLine();
             }
