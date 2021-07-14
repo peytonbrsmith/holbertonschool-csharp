@@ -7,6 +7,7 @@ class List {
         if (size < 0)
         {
             Console.WriteLine("Size cannot be negative");
+            return null;
         }
 
         // Create and print list of integers of size
