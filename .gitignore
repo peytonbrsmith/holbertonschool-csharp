@@ -1,0 +1,6 @@
+*.cache
+**/bin/**
+**/obj/**
+Program.cs
+*-main.cs
+**/.vscode/**
