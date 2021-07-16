@@ -21,7 +21,7 @@ class LList {
                 }
                 current = current.Next;
             }
-            newNode = myLList.AddAfter(current, n);
+            newNode = myLList.AddBefore(current, n);
         }
         return newNode;
     }
