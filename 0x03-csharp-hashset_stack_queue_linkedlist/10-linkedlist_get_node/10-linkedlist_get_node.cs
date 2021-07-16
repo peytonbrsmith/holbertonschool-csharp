@@ -12,7 +12,7 @@ class LList {
         {
             node = node.Next;
         }
-        if (node.Next == null && i != n)
+        if (node.Next == null)
         {
             return 0;
         }
