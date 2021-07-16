@@ -3,19 +3,18 @@ using System.Collections.Generic;
 class LList {
     public static int GetNode(LinkedList<int> myLList, int n)
     {
-        // Get nth node from head
+        // Get nth node from list
         LinkedListNode<int> node = myLList.First;
-        
-        int i;
-        
-        for (i = 0; i < n; i++)
+        int count = 0;
+        while (node != null)
         {
+            if (count == n)
+            {
+                return node.Value;
+            }
             node = node.Next;
+            count++;
         }
-        if (node.Next == null)
-        {
-            return 0;
-        }
-        return node.Value;
+        return 0;
     }
 }
