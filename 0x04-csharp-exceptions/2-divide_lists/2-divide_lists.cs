@@ -20,6 +20,10 @@ class List
                     Console.WriteLine("Cannot divide by zero");
                     results.Add(0);
                 }
+                catch (System.ArgumentOutOfRangeException)
+                {
+                    Console.WriteLine("Out of range");
+                }
             }
         }
         catch (System.ArgumentOutOfRangeException)
