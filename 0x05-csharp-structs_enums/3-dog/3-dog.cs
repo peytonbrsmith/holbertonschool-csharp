@@ -21,6 +21,6 @@ struct Dog
     public string owner;
     public Rating rating;
 
-    public override string ToString() => $"My name is {name} and I am {age}. I am an {rating} dog. :)";
+    public override string ToString() => $"Dog Name: {name}\nAge: {age}\nOwner: {owner}\nRating: {rating}";
 }
 
