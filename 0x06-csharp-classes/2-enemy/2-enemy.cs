@@ -1,3 +1,5 @@
+using System;
+
 namespace Enemies
 {
     /// <summary>
@@ -22,6 +24,10 @@ namespace Enemies
         /// <param name="value"></param>
         public Zombie(int value)
         {
+            if (value < 0)
+            {
+                throw new ArgumentException("Health must be greater than or equal to 0");
+            }
             health = value;
         }
     }
