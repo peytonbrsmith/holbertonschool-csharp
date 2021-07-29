@@ -1,6 +1,6 @@
 using NUnit.Framework;
 
-namespace Tests
+namespace Text.Tests
 {
     public class Tests
     {
@@ -10,9 +10,24 @@ namespace Tests
         }
 
         [Test]
-        public void Test1()
+        public void normalstring()
         {
-            Assert.Pass();
+            Assert.AreEqual(Str.UniqueChar("helloworld"), 1);
+        }
+        [Test]
+        public void emptystring()
+        {
+            Assert.AreEqual(Str.UniqueChar(""), -1);
+        }
+        [Test]
+        public void startofstring()
+        {
+            Assert.AreEqual(Str.UniqueChar("abbbbbbbb"), 1);
+        }
+        [Test]
+        public void endofstring()
+        {
+            Assert.AreEqual(Str.UniqueChar("bbbbbbbba"), 8);
         }
     }
 }
