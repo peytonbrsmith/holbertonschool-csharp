@@ -41,20 +41,12 @@ namespace MyMath.Tests
         [Test]
         public void Zeroes()
         {
-            try
-            {
-                int [,] test_matrix = new int [2,4] {
-                {-2, -4, -6, -8} ,
-                {-10, -12, -14, -16}
-                };
-                var result = Matrix.Divide(test_matrix, 0);
-            }
-            catch (System.DivideByZeroException)
-            {
-                Assert.Pass();
-                return;
-            }
-            Assert.Fail();
+            int [,] test_matrix = new int [2,4] {
+            {-2, -4, -6, -8} ,
+            {-10, -12, -14, -16}
+            };
+            var result = Matrix.Divide(test_matrix, 0);
+            Assert.AreEqual(result, null);
         }
     }
 }
