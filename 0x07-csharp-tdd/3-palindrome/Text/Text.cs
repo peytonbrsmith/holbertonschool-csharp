@@ -23,7 +23,6 @@ namespace Text
             s = s.Replace(",", "");
             s = s.Replace(".", "");
             s = s.ToLower();
-            Console.WriteLine(s);
             for (int i = 0, j = s.Length - 1; i < j; i++, j--)
             {
                 if (s[i] != s[j])
