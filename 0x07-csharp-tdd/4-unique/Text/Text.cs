@@ -24,7 +24,7 @@ namespace Text
             {
                 if (c != rep)
                 {
-                    return s.IndexOf(c);
+                    return (s.IndexOf(c) - 1);
                 }
                 else
                 {

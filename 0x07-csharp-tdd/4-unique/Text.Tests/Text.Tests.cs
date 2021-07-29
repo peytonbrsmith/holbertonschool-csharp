@@ -12,7 +12,7 @@ namespace Text.Tests
         [Test]
         public void normalstring()
         {
-            Assert.AreEqual(Str.UniqueChar("helloworld"), 1);
+            Assert.AreEqual(Str.UniqueChar("helloworld"), 0);
         }
         [Test]
         public void emptystring()
@@ -22,12 +22,12 @@ namespace Text.Tests
         [Test]
         public void startofstring()
         {
-            Assert.AreEqual(Str.UniqueChar("abbbbbbbb"), 1);
+            Assert.AreEqual(Str.UniqueChar("abbbbbbbb"), 0);
         }
         [Test]
         public void endofstring()
         {
-            Assert.AreEqual(Str.UniqueChar("bbbbbbbba"), 8);
+            Assert.AreEqual(Str.UniqueChar("bbbbbbbba"), 7);
         }
     }
 }
