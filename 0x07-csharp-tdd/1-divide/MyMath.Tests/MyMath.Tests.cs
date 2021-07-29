@@ -48,5 +48,11 @@ namespace MyMath.Tests
             var result = Matrix.Divide(test_matrix, 0);
             Assert.AreEqual(result, null);
         }
+        [Test]
+        public void isnull()
+        {
+            var result = Matrix.Divide(null, 0);
+            Assert.AreEqual(result, null);
+        }
     }
 }
