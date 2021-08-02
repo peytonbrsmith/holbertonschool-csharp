@@ -12,12 +12,14 @@ class Obj {
     /// <param name="myObj"></param>
     public static void Print(object myObj)
     {
-        Type myType = myObj.GetType();
-        IList<PropertyInfo> props = new List<PropertyInfo>(myType.GetProperties());
+        Console.WriteLine("{0} Properties:", myObj.GetType().Name);
 
-        foreach (PropertyInfo prop in props)
-        {
+        foreach (var prop in myObj.GetType().GetProperties())
             Console.WriteLine(prop.Name);
-        }
+
+        Console.WriteLine("{0} Methods:", myObj.GetType().Name);
+        
+        foreach (var method in myObj.GetType().GetMethods())
+            Console.WriteLine(method.Name);
     }
 }
