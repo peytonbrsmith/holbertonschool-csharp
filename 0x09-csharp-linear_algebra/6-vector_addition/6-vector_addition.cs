@@ -6,17 +6,16 @@ class VectorMath {
         double[] result = new double[vector1.Length];
 
         if (vector1.Length != vector2.Length )
-            return -1;
-
+            return new double[-1];
         if (vector1.Length == 2 || vector2.Length == 3)
         {
             for (int i = 0; i < vector1.Length; i++)
-        {
-            result[i] = vector1[i] + vector2[i];
-        }
-        return result;
+            {
+                result[i] = vector1[i] + vector2[i];
+            }
+            return result;
         }
 
-        return -1;
+        return new double[-1];
     }
 }
