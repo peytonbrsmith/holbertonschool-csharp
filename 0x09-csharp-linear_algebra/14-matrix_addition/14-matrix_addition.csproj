@@ -1,9 +1,11 @@
+
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
+    <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
     <OutputType>Exe</OutputType>
-    <TargetFramework>net5.0</TargetFramework>
-    <RootNamespace>_14_matrix_addition</RootNamespace>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <RootNamespace>_9_shape</RootNamespace>
   </PropertyGroup>
 
 </Project>
