@@ -5,9 +5,7 @@ class VectorMath {
     {
         double[] result = new double[vector1.Length];
 
-        if (vector1.Length != vector2.Length )
-            return new double[-1];
-        if (vector1.Length == 2 || vector2.Length == 3)
+        if (vector1.Length == vector2.Length && (vector1.Length == 2 || vector1.Length == 3))
         {
             for (int i = 0; i < vector1.Length; i++)
             {
@@ -15,7 +13,8 @@ class VectorMath {
             }
             return result;
         }
-
-        return new double[-1];
+        double[] err = new double[1];
+        err[0] = -1;
+        return err;
     }
 }
