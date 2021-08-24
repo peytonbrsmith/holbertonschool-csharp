@@ -4,6 +4,8 @@ class MatrixMath
 {
     public static double[,] Add(double[,] matrix1, double[,] matrix2)
     {
+        double[,] result;
+
         // check the size of the matrices
         if (matrix1.GetLength(0) != matrix2.GetLength(0) || matrix1.GetLength(1) != matrix2.GetLength(1))
         {
