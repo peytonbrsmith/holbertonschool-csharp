@@ -24,11 +24,11 @@ class MatrixMath {
     {
         double[,] result = new double[matrix2.GetLength(0), matrix2.GetLength(1)];
 
-        for (int i = 0; i < matrix1.GetLength(0); i++)
+        for (int i = 0; i < matrix2.GetLength(0); i++)
         {
-            for (int j = 0; j < matrix1.GetLength(1); j++)
+            for (int j = 0; j < matrix2.GetLength(1); j++)
             {
-                for (int k = 0; k < matrix1.GetLength(1); k++)
+                for (int k = 0; k < matrix2.GetLength(1); k++)
                 {
                     result[i, j] += matrix1[i, k] * matrix2[k, j];
                 }
