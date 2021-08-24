@@ -7,10 +7,14 @@ class MatrixMath
     {
         double[,] result = new double[matrix1.GetLength(0), matrix1.GetLength(1)];
 
+        if ((matrix1.GetLength(0) != 2 && matrix1.GetLength(0) != 3) || (matrix1.GetLength(1) != 2 && matrix1.GetLength(1) != 3))
+        {
+            double[,] err = new double[,] { { -1 } };
+            err[0, 0] = -1;
+            return err;
+        }
         if (
             (matrix1.GetLength(0) != matrix2.GetLength(0) || matrix1.GetLength(1) != matrix2.GetLength(1))
-            ||
-            (matrix1.GetLength(0) != 2 && matrix1.GetLength(0) != 3)
             )
         {
             double[,] err = new double[,] { { -1 } };
