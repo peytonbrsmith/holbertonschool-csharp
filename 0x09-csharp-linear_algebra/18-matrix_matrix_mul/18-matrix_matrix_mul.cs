@@ -24,12 +24,12 @@ class MatrixMath {
     {
         double[,] result = new double[matrix1.GetLength(0), matrix2.GetLength(1)];
 
-        // if (matrix1.GetLength(0) != matrix2.GetLength(1) || matrix1.GetLength(1) != matrix2.GetLength(0))
-        // {
-        //     double[,] err = new double[,] { { -1 } };
-        //     err[0, 0] = -1;
-        //     return err;
-        // }
+        if (matrix1.GetLength(1) != matrix2.GetLength(0))
+        {
+            double[,] err = new double[,] { { -1 } };
+            err[0, 0] = -1;
+            return err;
+        }
 
         for (int i = 0; i < result.GetLength(0); i++)
         {
