@@ -35,7 +35,6 @@ class MatrixMath {
         {
             for (int j = 0; j < result.GetLength(1); j++)
             {
-                Console.WriteLine("i: " + i + " j: " + j);
                 result[i, j] = 0;
                 for (int k = 0; k < matrix1.GetLength(1); k++)
                 {
