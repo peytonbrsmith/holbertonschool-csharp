@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 
 class VectorMath {
     public static double DotProduct(double[] vector1, double[] vector2)
@@ -27,7 +28,10 @@ class MatrixMath {
         {
             for (int j = 0; j < matrix1.GetLength(1); j++)
             {
-                result[i, j] = VectorMath.DotProduct(new double[] { matrix1[i, 0], matrix1[i, 1] }, new double[] { matrix2[0, j], matrix2[1, j] });
+                for (int k = 0; k < matrix1.GetLength(1); k++)
+                {
+                    result[i, j] += matrix1[i, k] * matrix2[k, j];
+                }
             }
         }
 
