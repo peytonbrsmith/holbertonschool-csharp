@@ -3,11 +3,11 @@ using System;
 class MatrixMath{
     public static double Determinant(double[,] matrix)
     {
-        if(matrix.GetLength(1) == 2)
+        if(matrix.GetLength(1) == 2 && matrix.GetLength(0) == 2)
         {
             return Math.Round((matrix[0,0] * matrix[1,1]) - (matrix[0,1] * matrix[1,0]), 2);
         }
-        else if (matrix.GetLength(1) == 3)
+        else if (matrix.GetLength(1) == 3 && matrix.GetLength(0) == 3)
         {
             double  det = 0;
 
