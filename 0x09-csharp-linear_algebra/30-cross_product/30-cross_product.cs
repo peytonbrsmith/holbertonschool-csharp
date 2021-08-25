@@ -6,7 +6,7 @@ class VectorMath
     {
         if (vector1.Length != 3 || vector2.Length != 3)
         {
-            double[] error = new double[1, 1];
+            double[] error = new double[1];
             error[0] = -1;
             return error;
         }
