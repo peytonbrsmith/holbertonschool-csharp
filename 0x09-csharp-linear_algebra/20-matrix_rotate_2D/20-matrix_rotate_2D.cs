@@ -15,7 +15,7 @@ class MatrixMath
         double sin = Math.Sin(angle);
         double[,] rotationMatrix = new double[2, 2];
         rotationMatrix[0, 0] = cos;
-        rotationMatrix[0, 1] = -sin;
+        rotationMatrix[0, 1] = -1 * sin;
         rotationMatrix[1, 0] = sin;
         rotationMatrix[1, 1] = cos;
 
