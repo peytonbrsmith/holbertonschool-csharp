@@ -15,7 +15,7 @@ class MatrixMath
         double sin = Math.Sin(angle);
         double[,] rotationMatrix = new double[2, 2];
         rotationMatrix[0, 0] = cos;
-        rotationMatrix[0, 1] = -1 * sin;
+        rotationMatrix[0, 1] = -sin;
         rotationMatrix[1, 0] = sin;
         rotationMatrix[1, 1] = cos;
 
@@ -26,11 +26,12 @@ class MatrixMath
             {
                 if (j == 0)
                 {
-                    rotatedMatrix[i, j] = Math.Round(matrix[i, j] * rotationMatrix[0, j] + matrix[i, 1] * rotationMatrix[0, 1], 2);
+                    rotatedMatrix[i, j] = Math.Round(matrix[i, j] * rotationMatrix[0, j], 2) + Math.Round(matrix[i, 1] * rotationMatrix[0, 1], 2);
+                    // rotatedMatrix[i, j] = matrix[i, j] * rotationMatrix[0, j] + matrix[i, 1] * rotationMatrix[0, 1];
                 }
                 if (j == 1)
                 {
-                    rotatedMatrix[i, j] = Math.Round(matrix[i, j] * rotationMatrix[1, j] + matrix[i, j - 1] * rotationMatrix[1, 0], 2);
+                    rotatedMatrix[i, j] = Math.Round(matrix[i, j] * rotationMatrix[1, j] + matrix[i, j - 1] * rotationMatrix[1, 0], 2, MidpointRounding.ToEven);
                 }
             }
         }
