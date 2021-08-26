@@ -9,7 +9,6 @@ class MatrixMath
         if (matrix.GetLength(0) != matrix.GetLength(1) || matrix.GetLength(0) != 2 || (direction != 'x' && direction != 'y'))
         {
             double[,] err = new double[,] { { -1 } };
-            err[0, 0] = -1;
             return err;
         }
 
