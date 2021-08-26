@@ -21,7 +21,7 @@ class MatrixMath
     }
     public static double[,] Inverse2D(double[,] matrix)
     {
-        if (matrix.GetLength(0) != 2)
+        if (matrix.GetLength(0) != 2 || Determinant(matrix) == 0)
         {
             double[,] err = new double[,] { { -1 } };
             return err;
@@ -30,8 +30,8 @@ class MatrixMath
         double[,] inverse = new double[matrix.GetLength(0), matrix.GetLength(1)];
         inverse[0, 0] = Math.Round(matrix[1, 1] / (matrix[0, 0] * matrix[1, 1] - matrix[1, 0] * matrix[0, 1]), 2);
         inverse[1, 1] = Math.Round(matrix[0, 0] / (matrix[0, 0] * matrix[1, 1] - matrix[1, 0] * matrix[0, 1]), 2);
-        inverse[0, 1] = Math.Round(-(matrix[1, 0] / (matrix[0, 0] * matrix[1, 1] - matrix[1, 0] * matrix[0, 1])), 2);
-        inverse[1, 0] = Math.Round(-(matrix[0, 1] / (matrix[0, 0] * matrix[1, 1] - matrix[1, 0] * matrix[0, 1])), 2);
+        inverse[1, 0] = Math.Round(-(matrix[1, 0] / (matrix[0, 0] * matrix[1, 1] - matrix[1, 0] * matrix[0, 1])), 2);
+        inverse[0, 1] = Math.Round(-(matrix[0, 1] / (matrix[0, 0] * matrix[1, 1] - matrix[1, 0] * matrix[0, 1])), 2);
 
         return inverse;
     }
