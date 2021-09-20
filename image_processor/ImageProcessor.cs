@@ -43,7 +43,10 @@ class ImageProcessor
                 }
 
                 //save negative image
-                bmp.Save(new_filename.Split("/")[1]);
+                if (new_filename.Split("/").Length > 1)
+                    bmp.Save(new_filename.Split("/")[1]);
+                else
+                    bmp.Save(new_filename);
                 // Console.WriteLine(currentDirName + "/" + new_filename);
                 // System.IO.File.Move(new_filename, currentDirName + "/" + );
             }
