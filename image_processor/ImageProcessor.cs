@@ -1,10 +1,14 @@
 ﻿using System;
 using System.Drawing;
+using System.IO;
 
 class ImageProcessor
     {
         public static void Inverse(string[] filenames)
         {
+
+            string currentDirName = System.IO.Directory.GetCurrentDirectory();
+
             foreach (string filename in filenames)
             {
                 string new_filename = filename.Split('.')[0] + "_inverse.jpg";
@@ -39,7 +43,9 @@ class ImageProcessor
                 }
 
                 //save negative image
-                bmp.Save(new_filename);
+                bmp.Save(new_filename.Split("/")[1]);
+                // Console.WriteLine(currentDirName + "/" + new_filename);
+                // System.IO.File.Move(new_filename, currentDirName + "/" + );
             }
         }
     }
