@@ -2,6 +2,6 @@ class Queue<T>
 {
     public System.Type CheckType()
     {
-       return (this.GetType());
+       return (typeof(T));
     }
 }
