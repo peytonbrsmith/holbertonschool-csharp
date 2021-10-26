@@ -134,15 +134,15 @@ class RoomObjects {
     {
         foreach (Base item in roomObjects)
         {
-            if (item is IInteractive)
+            if (item is IInteractive && type.IsAssignableFrom(typeof(IInteractive)))
             {
                 ((IInteractive)item).Interact();
             }
-            else if (item is IBreakable)
+            else if (item is IBreakable && type.IsAssignableFrom(typeof(IBreakable)))
             {
                 ((IBreakable)item).Break();
             }
-            else if (item is ICollectable)
+            else if (item is ICollectable && type.IsAssignableFrom(typeof(ICollectable)))
             {
                 ((ICollectable)item).Collect();
             }
