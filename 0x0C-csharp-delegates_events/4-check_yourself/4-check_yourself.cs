@@ -34,31 +34,31 @@ public class Player
     {
         // If the value is equal to maxHp, print:
         // <name> is in perfect health!
-        if (e.currentHP == this.maxHp)
+        if (e.currentHp == this.maxHp)
         {
             Console.WriteLine("{0} is in perfect health!", this.name);
         }
         // If the value is between ½ of maxHp (inclusive) and maxHp (exclusive), print:
         // <name> is doing well!
-        else if (e.currentHP >= this.maxHp / 2 && e.currentHP < this.maxHp)
+        else if (e.currentHp >= this.maxHp / 2 && e.currentHp < this.maxHp)
         {
             Console.WriteLine("{0} is doing well!", this.name);
         }
         // If the value is between ¼ of maxHp (inclusive) and ½ of maxHp (exclusive), print:
         // <name> isn't doing too great...
-        else if (e.currentHP >= this.maxHp / 4 && e.currentHP < this.maxHp / 2)
+        else if (e.currentHp >= this.maxHp / 4 && e.currentHp < this.maxHp / 2)
         {
             Console.WriteLine("{0} isn't doing too great...", this.name);
         }
         // If the value is between 0 (exclusive) and ¼ of maxHp (exclusive), print:
         // <name> needs help!
-        else if (e.currentHP > 0 && e.currentHP < this.maxHp / 4)
+        else if (e.currentHp > 0 && e.currentHp < this.maxHp / 4)
         {
             Console.WriteLine("{0} needs help!", this.name);
         }
         // If the value is 0, print:
         // <name> is knocked out!
-        else if (e.currentHP == 0)
+        else if (e.currentHp == 0)
         {
             Console.WriteLine("{0} is knocked out!", this.name);
         }
@@ -185,11 +185,11 @@ public delegate float CalculateModifier(float baseValue, Modifier modifier);
 
 class CurrentHPArgs : EventArgs
 {
-    public float currentHP { get; }
+    public float currentHp { get; private set; }
 
     public CurrentHPArgs(float newHP)
     {
-        this.currentHP = newHP;
+        this.currentHp = newHP;
     }
 
 
