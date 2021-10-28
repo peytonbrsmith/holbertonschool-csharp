@@ -185,7 +185,7 @@ public delegate float CalculateModifier(float baseValue, Modifier modifier);
 
 class CurrentHPArgs : EventArgs
 {
-    public float currentHp { get; private set; }
+    public readonly float currentHp;
 
     public CurrentHPArgs(float newHP)
     {
