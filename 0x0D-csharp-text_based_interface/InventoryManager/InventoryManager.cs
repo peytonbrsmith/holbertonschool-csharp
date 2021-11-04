@@ -15,6 +15,18 @@ namespace InventoryManager
     class Program
     {
 
+        public static string prompt = @"Inventory Manager
+-------------------------
+<ClassNames> show all ClassNames of objects
+<All> show all objects
+<All [ClassName]> show all objects of a ClassName
+<Create [ClassName]> a new object
+<Show [ClassName object_id]> an object
+<Update [ClassName object_id]> an object
+<Delete [ClassName object_id]> an object
+<Exit>
+";
+
         public static Dictionary<string, Type> types_avail = new Dictionary<string, Type>(){
             {"item", typeof(Item)},
             {"user", typeof(User)},
@@ -28,17 +40,7 @@ namespace InventoryManager
 
             JSONStorage engine = new JSONStorage();
 
-            string prompt = @"Inventory Manager
--------------------------
-<ClassNames> show all ClassNames of objects
-<All> show all objects
-<All [ClassName]> show all objects of a ClassName
-<Create [ClassName]> a new object
-<Show [ClassName object_id]> an object
-<Update [ClassName object_id]> an object
-<Delete [ClassName object_id]> an object
-<Exit>
-";
+
             Console.WriteLine(prompt);
             string line = "";
             args = line.Split(' ');
@@ -102,6 +104,7 @@ namespace InventoryManager
                     }
                 }
             }
+            Console.WriteLine(prompt);
         }
         static void Show(string[] args, JSONStorage engine)
         {
@@ -113,6 +116,7 @@ namespace InventoryManager
             else if (!types_avail.ContainsKey(args[1]))
             {
                 Console.WriteLine($"{args[1]} is not a valid object type");
+                return;
             }
             else
             {
@@ -124,14 +128,17 @@ namespace InventoryManager
                 else
                 {
                     Console.WriteLine("No such object");
+                    return;
                 }
             }
+            Console.WriteLine(prompt);
         }
         static void Create(string[] args, JSONStorage engine)
         {
             if (args.Length != 2)
             {
                 Console.WriteLine("Create [ClassName]");
+                return;
             }
             else
             {
@@ -181,9 +188,10 @@ namespace InventoryManager
                         break;
                     default:
                         Console.WriteLine($"{args[1]} is not a valid object type");
-                        break;
+                        return;
                 }
             }
+            Console.WriteLine(prompt);
         }
 
         static void Delete(string[] args, JSONStorage engine)
@@ -191,10 +199,12 @@ namespace InventoryManager
             if (args.Length != 3)
             {
                 Console.WriteLine("Delete [ClassName] [object_id]");
+                return;
             }
             else if (!types_avail.ContainsKey(args[1]))
             {
                 Console.WriteLine($"{args[1]} is not a valid object type");
+                return;
             }
             else
             {
@@ -217,9 +227,11 @@ namespace InventoryManager
                 else
                 {
                     Console.WriteLine($"Object {obj_id} could not be found");
+                    return;
                 }
             }
             engine.Save();
+            Console.WriteLine(prompt);
         }
 
         static void Update(string[] args, JSONStorage engine)
@@ -227,10 +239,12 @@ namespace InventoryManager
             if (args.Length != 3)
             {
                 Console.WriteLine("Update [ClassName] [object_id]");
+                return;
             }
             else if (!types_avail.ContainsKey(args[1]))
             {
                 Console.WriteLine($"{args[1]} is not a valid object type");
+                return;
             }
             else
             {
@@ -380,10 +394,11 @@ namespace InventoryManager
                 else
                 {
                     Console.WriteLine($"Object {obj_id} could not be found");
+                    return;
                 }
             }
-
             engine.Save();
+            Console.WriteLine(prompt);
         }
 
         static bool checkKey(string inkey, JSONStorage engine, string idType)
