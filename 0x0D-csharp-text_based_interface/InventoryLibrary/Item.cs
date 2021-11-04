@@ -48,7 +48,7 @@ namespace InventoryLibrary
             }
             if (price > 0.0f)
                 Price = price;
-            if (tags != null && tags.Count > 0)
+            if (tags != null && tags.Count > 0 && tags[0] != "")
                 Tags = tags;
         }
     }
