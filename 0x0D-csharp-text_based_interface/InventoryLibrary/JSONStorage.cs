@@ -16,10 +16,11 @@ namespace InventoryLibrary
 
         public void New(BaseClass obj)
         {
-            string key = obj.GetType().Name + "." + obj.Id;
+            string key = obj.GetType().Name.ToLower() + "." + obj.Id;
             objects.Add(key, obj);
             this.Save();
             this.Load();
+            Console.WriteLine("New/updated object added to JSON storage: " + key);
         }
 
         public void Save()
@@ -32,7 +33,6 @@ namespace InventoryLibrary
             }
 
             string json = JsonSerializer.Serialize(objects);
-            Console.WriteLine(json);
             File.WriteAllText(jsonPath, json);
         }
 
@@ -48,22 +48,14 @@ namespace InventoryLibrary
 
             if (File.Exists(jsonPath))
             {
-                try
-                {
-                    string json = File.ReadAllText(jsonPath);
-                    objects = JsonSerializer.Deserialize<Dictionary<string, Object>>(json);
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine(e);
-                }
+                string json = File.ReadAllText(jsonPath);
+                objects = JsonSerializer.Deserialize<Dictionary<string, Object>>(json);
             }
             else
             {
-                File.Create(jsonPath);
+                var myFile = File.Create(jsonPath);
+                myFile.Close();
             }
-
-
         }
 
         public JSONStorage()

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text.Json;
 
 namespace InventoryLibrary
 {
@@ -38,9 +39,17 @@ namespace InventoryLibrary
             set { tags = value; }
         }
 
-        public Item(string name)
+        public Item(string name = null, string description = null, float price = 0.0f, List<string> tags = null)
         {
             Name = name;
+            if (description != "")
+            {
+                Description = description;
+            }
+            if (price > 0.0f)
+                Price = price;
+            if (tags != null && tags.Count > 0)
+                Tags = tags;
         }
     }
 }

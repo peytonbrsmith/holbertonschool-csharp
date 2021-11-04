@@ -21,6 +21,7 @@ namespace InventoryLibrary
         public string Id
         {
             get { return id; }
+            set { id = value; }
         }
 
         public DateTime Date_created
@@ -31,6 +32,7 @@ namespace InventoryLibrary
         public DateTime Date_updated
         {
             get { return date_updated; }
+            set { date_updated = value; }
         }
     }
 }
