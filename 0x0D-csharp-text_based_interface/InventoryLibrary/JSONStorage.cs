@@ -7,6 +7,8 @@ namespace InventoryLibrary
 {
     public class JSONStorage
     {
+
+        public string jsonPath = "../storage/inventory_manager.json";
         Dictionary<string, Object> objects;
 
         public Dictionary<string, Object> All()
@@ -25,8 +27,6 @@ namespace InventoryLibrary
 
         public void Save()
         {
-            string jsonPath = "storage/inventory_manager.json";
-
             if (!File.Exists(jsonPath))
             {
                 File.Create(jsonPath);
@@ -38,8 +38,7 @@ namespace InventoryLibrary
 
         public void Load()
         {
-            string jsonPath = "storage/inventory_manager.json";
-            string directory = "storage/";
+            string directory = "../storage/";
 
             if (!Directory.Exists(directory))
             {
