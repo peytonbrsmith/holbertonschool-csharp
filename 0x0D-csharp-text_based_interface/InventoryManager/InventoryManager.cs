@@ -5,11 +5,6 @@ using System.Linq;
 using InventoryLibrary;
 using System.Reflection;
 using System.Text.Json;
-
-
-public static class GenericToStringExts {
-  public static string ToStringExt<T>(this List<T> list) => "[" + string.Join(", ", list) + "]";
-}
 namespace InventoryManager
 {
     class Program
@@ -36,10 +31,7 @@ namespace InventoryManager
         static void Main(string[] args)
         {
 
-
-
             JSONStorage engine = new JSONStorage();
-
 
             Console.WriteLine(prompt);
             string line = "";
@@ -150,10 +142,6 @@ namespace InventoryManager
                         Console.WriteLine("Optional Properties (Leave blank for default):");
                         Console.WriteLine("Enter Description (Optional):");
                         string itemDesc = Console.ReadLine();
-                        // if (itemDesc != null)
-                        // {
-                        //     itemDesc = itemDesc.Trim();
-                        // }
                         Console.WriteLine("Enter Price (Optional):");
                         bool isPrice = float.TryParse(Console.ReadLine(), out float itemPrice);
                         if (!isPrice)
@@ -252,18 +240,11 @@ namespace InventoryManager
 
                 if (engine.All().ContainsKey(obj_id))
                 {
-                    // JsonElement obj = (JsonElement) engine.All()[obj_id];
-                    // // Console.WriteLine(obj);
-                    // Console.WriteLine("Leave blank to keep current values");
-                    // foreach (var prop in obj.EnumerateObject())
-                    // {
-                    //     Console.WriteLine($"Change {prop.Name} from \"{prop.Value}\" to:");
-                    // }
                     var options = new JsonSerializerOptions
                     {
                         PropertyNameCaseInsensitive = false,
                         IgnoreNullValues = true,
-                        // WriteIndented = true
+                        WriteIndented = true
                     };
                     object updateObj;
                     switch (args[1])
@@ -297,10 +278,13 @@ namespace InventoryManager
                             if (prop.Name == "Tags")
                             {
                                 Console.Write($"Change {prop.Name} from [");
-                                foreach (string tag in (List<string>)prop.GetValue(updateObj))
-                                {
-                                    Console.Write($"{tag}, ");
+                                try{
+                                    foreach (string tag in (List<string>)prop.GetValue(updateObj))
+                                    {
+                                        Console.Write($"{tag}, ");
+                                    }
                                 }
+                                catch {}
                                 Console.WriteLine("] To:");
                                 List<string> itemTags = new List<string>(Console.ReadLine().Replace(" ", "").Split(','));
                                 if (itemTags != null && itemTags.Count > 0)
@@ -340,56 +324,6 @@ namespace InventoryManager
                             }
                         }
                     engine.New((BaseClass) updateObj);
-                    // if (args[1] == "item")
-                    // {
-                    //     Item updateObj = JsonSerializer.Deserialize<Item>(engine.All()[obj_id].ToString(), options);
-                    //     Console.WriteLine(updateObj);
-                    //     foreach (PropertyInfo prop in updateObj.GetType().GetProperties())
-                    //     {
-                    //         Console.WriteLine($"Change {prop.Name} from \"{prop.GetValue(updateObj)}\" to:");
-                    //         string line = Console.ReadLine();
-                    //         if (line != "")
-                    //         {
-                    //             prop.SetValue(updateObj, line);
-                    //         }
-                    //         if (prop.GetSetMethod() != null)
-                    //         {
-                    //             Console.WriteLine($"Change {prop.Name} from \"{prop.GetValue(updateObj)}\" to:");
-                    //             line = Console.ReadLine();
-                    //             prop.SetValue(updateObj, line);
-                    //         }
-                    //     }
-                    // }
-                    // else if (args[1] == "user")
-                    // {
-                    //     User updateObj = JsonSerializer.Deserialize<User>(engine.All()[obj_id].ToString());
-                    //     Console.WriteLine(updateObj);
-                    //     foreach (PropertyInfo prop in updateObj.GetType().GetProperties())
-                    //     {
-                    //         if (prop.GetSetMethod() != null)
-                    //         {
-                    //             Console.WriteLine($"Change {prop.Name} from \"{prop.GetValue(updateObj)}\" to:");
-                    //             string line = Console.ReadLine();
-                    //             prop.SetValue(updateObj, line);
-                    //         }
-                    //     }
-                    // }
-                    // else if (args[1] == "inventory")
-                    // {
-                    //     Inventory updateObj = JsonSerializer.Deserialize<Inventory>(engine.All()[obj_id].ToString());
-                    //     Console.WriteLine(updateObj);
-                    //     foreach (PropertyInfo prop in updateObj.GetType().GetProperties())
-                    //     {
-                    //         if (prop.GetSetMethod() != null)
-                    //         {
-                    //             Console.WriteLine($"Change {prop.Name} from \"{prop.GetValue(updateObj)}\" to:");
-                    //             string line = Console.ReadLine();
-                    //             prop.SetValue(updateObj, line);
-                    //         }
-                    //     }
-                    // }
-
-
                 }
                 else
                 {

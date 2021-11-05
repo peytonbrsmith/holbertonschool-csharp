@@ -5,17 +5,31 @@ using System.Text.Json;
 
 namespace InventoryLibrary
 {
+    /// <summary>
+    /// JsonStorage
+    /// </summary>
     public class JSONStorage
     {
-
+        /// <summary>
+        ///  Loads the inventory from a json file.
+        /// </summary>
         public string jsonPath = "../storage/inventory_manager.json";
         Dictionary<string, Object> objects;
 
+
+        /// <summary>
+        /// All Objects
+        /// </summary>
+        /// <returns>the dictionary of objects</returns>
         public Dictionary<string, Object> All()
         {
             return objects;
         }
 
+        /// <summary>
+        /// Insets obj into obj dictionary
+        /// </summary>
+        /// <param name="obj">the obj to be added</param>
         public void New(BaseClass obj)
         {
             string key = obj.GetType().Name.ToLower() + "." + obj.Id;
@@ -25,17 +39,28 @@ namespace InventoryLibrary
             Console.WriteLine("New/updated object added to JSON storage: " + key);
         }
 
+        /// <summary>
+        /// Saves the file to the jsonPath.
+        /// </summary>
         public void Save()
         {
             if (!File.Exists(jsonPath))
             {
                 File.Create(jsonPath);
             }
-
-            string json = JsonSerializer.Serialize(objects);
+            var options = new JsonSerializerOptions
+            {
+                PropertyNameCaseInsensitive = false,
+                IgnoreNullValues = true,
+                WriteIndented = true
+            };
+            string json = JsonSerializer.Serialize(objects, options);
             File.WriteAllText(jsonPath, json);
         }
 
+        /// <summary>
+        /// Loads the inventory from a json file.
+        /// </summary>
         public void Load()
         {
             string directory = "../storage/";
@@ -48,7 +73,14 @@ namespace InventoryLibrary
             if (File.Exists(jsonPath))
             {
                 string json = File.ReadAllText(jsonPath);
-                objects = JsonSerializer.Deserialize<Dictionary<string, Object>>(json);
+                try
+                {
+                    objects = JsonSerializer.Deserialize<Dictionary<string, Object>>(json);
+                }
+                catch
+                {
+
+                }
             }
             else
             {
@@ -57,6 +89,9 @@ namespace InventoryLibrary
             }
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="JSONStorage"/> class.
+        /// </summary>
         public JSONStorage()
         {
             objects = new Dictionary<string, Object>();
