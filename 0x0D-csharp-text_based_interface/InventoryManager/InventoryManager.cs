@@ -9,7 +9,9 @@ namespace InventoryManager
 {
     class Program
     {
-
+        /// <summary>
+        /// Prompt for console interface
+        /// </summary>
         public static string prompt = @"Inventory Manager
 -------------------------
 <ClassNames> show all ClassNames of objects
@@ -22,6 +24,9 @@ namespace InventoryManager
 <Exit>
 ";
 
+        /// <summary>
+        /// Dictionary of available types
+        /// </summary>
         public static Dictionary<string, Type> types_avail = new Dictionary<string, Type>(){
             {"item", typeof(Item)},
             {"user", typeof(User)},
@@ -30,12 +35,17 @@ namespace InventoryManager
         };
         static void Main(string[] args)
         {
-
+            // Initialize JSON storage
+            // or replace with database
             JSONStorage engine = new JSONStorage();
+
+            // Console interface handling
 
             Console.WriteLine(prompt);
             string line = "";
             args = line.Split(' ');
+
+            // Read input until we exit
 
             while (line != "Exit" && line != "exit")
             {
@@ -45,6 +55,9 @@ namespace InventoryManager
                     args[0] = args[0].ToLower();
                 if (args.Length >= 2)
                     args[1] = args[1].ToLower();
+                
+                // Check input for available commands
+
                 switch (args[0])
                 {
                     case "create":
@@ -72,6 +85,12 @@ namespace InventoryManager
             }
         }
 
+
+        /// <summary>
+        /// Shows all objects currently loaded
+        /// </summary>
+        /// <param name="args"></param>
+        /// <param name="engine"></param>
         static void All(string[] args, JSONStorage engine)
         {
             if (args.Length == 1)
@@ -98,6 +117,12 @@ namespace InventoryManager
             }
             Console.WriteLine(prompt);
         }
+
+        /// <summary>
+        /// Shows object of class and given ID
+        /// </summary>
+        /// <param name="args"></param>
+        /// <param name="engine"></param>
         static void Show(string[] args, JSONStorage engine)
         {
             if (args.Length != 3)
@@ -125,6 +150,12 @@ namespace InventoryManager
             }
             Console.WriteLine(prompt);
         }
+
+        /// <summary>
+        /// Creates new object of given classname
+        /// </summary>
+        /// <param name="args"></param>
+        /// <param name="engine"></param>
         static void Create(string[] args, JSONStorage engine)
         {
             if (args.Length != 2)
@@ -182,6 +213,11 @@ namespace InventoryManager
             Console.WriteLine(prompt);
         }
 
+        /// <summary>
+        /// Deletes object of given class and ID
+        /// </summary>
+        /// <param name="args"></param>
+        /// <param name="engine"></param>
         static void Delete(string[] args, JSONStorage engine)
         {
             if (args.Length != 3)
@@ -222,6 +258,12 @@ namespace InventoryManager
             Console.WriteLine(prompt);
         }
 
+
+        /// <summary>
+        /// Updates object of class and ID
+        /// </summary>
+        /// <param name="args"></param>
+        /// <param name="engine"></param>
         static void Update(string[] args, JSONStorage engine)
         {
             if (args.Length != 3)
@@ -335,6 +377,14 @@ namespace InventoryManager
             Console.WriteLine(prompt);
         }
 
+
+        /// <summary>
+        /// Checks if ID is valid in storage engine
+        /// </summary>
+        /// <param name="inkey"></param>
+        /// <param name="engine"></param>
+        /// <param name="idType"></param>
+        /// <returns></returns>
         static bool checkKey(string inkey, JSONStorage engine, string idType)
         {
             inkey = idType + "." + inkey;

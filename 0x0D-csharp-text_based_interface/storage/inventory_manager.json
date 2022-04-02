@@ -1,0 +1,36 @@
+{
+  "item.24bff2d8-b335-40f6-b141-677a74abdbfd": {
+    "Name": "New Item",
+    "Description": "Description of item goes here",
+    "Price": 9,
+    "Tags": [
+      "first",
+      "second"
+    ],
+    "Id": "24bff2d8-b335-40f6-b141-677a74abdbfd",
+    "Date_created": "2022-01-16T12:09:03.9016447-06:00",
+    "Date_updated": "2022-01-16T12:09:03.9024742-06:00"
+  },
+  "inventory.7d2b2326-cf97-4000-b911-9c40a4361ab5": {
+    "User_id": "203bb810-74e3-4b81-bfe5-291fb203c676",
+    "Item_id": "24bff2d8-b335-40f6-b141-677a74abdbfd",
+    "Quantity": 13,
+    "Id": "7d2b2326-cf97-4000-b911-9c40a4361ab5",
+    "Date_created": "2022-03-28T15:29:05.3618807-05:00",
+    "Date_updated": "2022-03-28T15:29:05.3628215-05:00"
+  },
+  "item.887d3506-4159-4d4a-b133-0337fe59df21": {
+    "Name": "Hat",
+    "Description": "Wear it on your head",
+    "Price": 5,
+    "Tags": [
+      "multiplecolors",
+      "xl",
+      "sm",
+      "lg"
+    ],
+    "Id": "887d3506-4159-4d4a-b133-0337fe59df21",
+    "Date_created": "2022-03-31T23:19:08.0508315-05:00",
+    "Date_updated": "2022-03-31T23:19:08.0519753-05:00"
+  }
+}

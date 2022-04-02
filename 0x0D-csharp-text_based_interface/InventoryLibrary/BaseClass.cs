@@ -8,7 +8,7 @@ namespace InventoryLibrary
     public class BaseClass
     {
         /// <summary>
-        /// BAse Class
+        /// Base Class
         /// </summary>
         private string id;
         private DateTime date_created;

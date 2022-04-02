@@ -30,7 +30,6 @@ namespace InventoryLibrary.Tests
         [Test]
         public void Test_Item_Create()
         {
-
             Guid base_guid;
             Assert.AreEqual(Guid.TryParse(new_item.Id, out base_guid), true);
             Assert.AreEqual(new_item.Date_created.GetType(), typeof(DateTime));

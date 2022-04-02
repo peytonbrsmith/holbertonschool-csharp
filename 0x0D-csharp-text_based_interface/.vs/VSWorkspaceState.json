@@ -1,0 +1,11 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\InventoryLibrary",
+    "\\InventoryManagement.Tests",
+    "\\InventoryManager",
+    "\\storage"
+  ],
+  "SelectedNode": "\\InventoryManager\\InventoryManager.cs",
+  "PreviewInSolutionExplorer": false
+}

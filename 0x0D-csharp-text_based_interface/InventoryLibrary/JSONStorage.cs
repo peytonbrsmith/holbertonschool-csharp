@@ -14,6 +14,9 @@ namespace InventoryLibrary
         ///  Loads the inventory from a json file.
         /// </summary>
         public string jsonPath = "../storage/inventory_manager.json";
+        /// <summary>
+        /// dictionary to store objects
+        /// </summary>
         Dictionary<string, Object> objects;
 
 
